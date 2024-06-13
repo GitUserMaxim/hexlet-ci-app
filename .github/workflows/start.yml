@@ -1,24 +1,20 @@
-name: Start
+name: start
 
 on:
-  push
-
+  - push
+  - pull_request
 
 jobs:
-
   build:
 
     runs-on: ubuntu-latest
 
 
     steps:
-
+      # Клонируем репозиторий
       - uses: actions/checkout@v3
-
+      # Устанавливаем Node.js
       - uses: actions/setup-node@v3
-
-      - run: make install
-
+      - run: make setup
       - run: make lint
-
       - run: make test
